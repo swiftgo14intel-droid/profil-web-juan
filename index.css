@@ -1,0 +1,386 @@
+/* style.css */
+
+/* Reset & Base */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0f0f0f;
+  color: #fff;
+  overflow-x: hidden;
+  transition: background 0.4s, color 0.4s;
+}
+
+h1.main-heading {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #00e676;
+    text-shadow: 0 0 8px rgba(0, 255, 100, 0.5);
+  }
+
+  h2.info-title {
+    font-size: 2rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+  }
+
+  .info-box {
+    border: 2px solid rgba(0, 230, 118, 0.3);
+    border-radius: 15px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 15px rgba(0, 230, 118, 0.1);
+    backdrop-filter: blur(5px);
+    transition: border 0.3s ease;
+  }
+
+  .info-box p {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    line-height: 1.7;
+  }
+
+  /* Efek khusus untuk mode siang */
+  body.light .info-box {
+    border: 2px solid rgba(0, 102, 255, 0.5);
+  }
+
+  body.light .info-title {
+    color: #000000;
+  }
+
+  body.light h1.main-heading {
+    color: #1976d2;
+    text-shadow: 0 0 8px rgba(25, 118, 210, 0.5);
+  }
+
+  /* Status grafik biru - placeholder class */
+  .status-bar {
+    width: 100%;
+    height: 10px;
+    background: #2196f3;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+hr {
+  border: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 30px 0;
+  backdrop-filter: blur(4px);
+}
+
+/* Container */
+.container {
+  max-width: 700px;
+  margin: 80px auto;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 20px rgba(0,255,100,0.3);
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s, background 0.4s, box-shadow 0.4s;
+}
+
+.parallax:hover {
+  transform: perspective(1000px) rotateY(3deg) rotateX(3deg);
+}
+
+.profile {
+  display: block;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 4px solid #00e676;
+}
+
+.info, .skills {
+  margin-top: 20px;
+}
+
+.skills .bar {
+  width: 100%;
+  height: 10px;
+  background: #333;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.skills .fill {
+  height: 100%;
+  background: linear-gradient(to right, #00e676, #00bfa5);
+  border-radius: 10px;
+  animation: fillAnim 2s ease-out;
+}
+
+@keyframes fillAnim {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.socials {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.socials a img {
+  width: 40px;
+  margin: 0 10px;
+  transition: transform 0.3s;
+  filter: brightness(1.2);
+}
+
+.socials a img:hover {
+  transform: scale(1.2);
+}
+
+/* Typing Animation (dipindah ke mode gelap) */
+body:not(.light) #cursor {
+  color: #00e676;
+  animation: blink 0.7s infinite;
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Matrix Canvas */
+#matrixCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -5;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+/* Toggle Mode */
+.toggle-mode {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
+
+#toggleMode {
+  padding: 8px 14px;
+  font-size: 1.2rem;
+  background: #111;
+  color: #00e676;
+  border: 2px solid #00e676;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+#toggleMode:hover {
+  background-color: #00e676;
+  color: #000;
+}
+
+/* Modal Pop-up */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #222;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0,255,100,0.4);
+  transition: all 0.3s ease-in-out;
+}
+
+.modal-content .close {
+  float: right;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.modal-btn {
+  margin-top: 25px;
+  padding: 10px 20px;
+  background: #00e676;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.modal-btn:hover {
+  background-color: #00c853;
+}
+
+/* LIGHT MODE - SIANG */
+body.light {
+  background: #fff;
+  color: #111;
+  background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+body.light .container {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e0e0e0;
+  backdrop-filter: blur(10px);
+  transition: all 0.5s ease-in-out;
+}
+
+body.light #toggleMode {
+  background: #fff;
+  color: #000;
+  border-color: #ccc;
+}
+
+body.light .modal-content {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+body.light .skills .bar {
+  background: #e0e0e0;
+}
+
+body.light .skills .fill {
+  background: linear-gradient(to right, #00796b, #004d40);
+}
+
+body.light .profile {
+  border-color: #1976d2;
+}
+
+body.light .socials a img {
+  filter: brightness(0.8);
+}
+
+body.light .modal-btn {
+  background: #1976d2;
+  color: white;
+}
+
+body.light .modal-btn:hover {
+  background: #0d47a1;
+}
+
+/* 🎱 Bola Biliar Dekoratif */
+.billiard-ball {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle at center, #000 60%, #fff 65%);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 24px;
+  color: white;
+  z-index: 20;
+  animation: bounce 2s infinite ease-in-out;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.4s ease-in-out;
+}
+
+body.light .billiard-ball {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ☁️ Awan Bergerak */
+body.light .cloud {
+  position: fixed;
+  top: 100px;
+  left: -200px;
+  width: 150px;
+  height: 80px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 60px 0 #fff, 120px 0 #fff;
+  opacity: 0.4;
+  animation: cloudMove 60s linear infinite;
+  z-index: 1;
+}
+
+@keyframes cloudMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(200vw); }
+}
+
+/* 🌧️ Hujan Mode Siang */
+body.light .raindrop {
+  position: fixed;
+  top: -10px;
+  width: 2px;
+  height: 20px;
+  background: #2196f3;
+  opacity: 0.4;
+  z-index: 3;
+  animation: raindropFall 2s linear infinite;
+}
+
+@keyframes raindropFall {
+  0% { top: -10px; }
+  100% { top: 100vh; }
+}
+
+/* 💻 Kode efek untuk dark mode */
+body:not(.light)::after {
+  content: "<div>Hello World</div>\A<code>function() {}</code>";
+  white-space: pre;
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: #00ff88;
+  opacity: 0.07;
+  pointer-events: none;
+  z-index: -1;
+  animation: codeDrift 10s infinite linear;
+}
+
+@keyframes codeDrift {
+  0% { transform: translateY(0); opacity: 0.1; }
+  100% { transform: translateY(-200px); opacity: 0; }
+}
